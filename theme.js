@@ -4,7 +4,6 @@
  * @version     1.0.0
  * @description Theme JS
  * @package     Theme
- * @subpackage  Scripts
  * @category    Theme
  * 
  */
@@ -12,31 +11,32 @@
 "use strict";
 
 function Theme(mode) {
-    if (mode === 'light') {
+    if (mode === 'light' || mode === 0) {
         mode = 0;
         this.textColor = '#333';
         this.backgroundColor = '#f5f5f5';
         this.borderColor = '#ddd';
     }
-    if (mode === 'dark') {
+    if (mode === 'dark' || mode === 1) {
         mode = 1;
         this.textColor = '#f5f5f5';
         this.backgroundColor = '#333';
         this.borderColor = '#444';
     }
+    if (mode !== 0 && mode !== 1) throw new Error('Invalid Theme Mode');
     this.mode = mode;
     this.css = this.createCssElement();
 }
 
-Theme.setTextColor = function (color) {
+Theme.prototype.setTextColor = function (color) {
     this.textColor = color;
 };
 
-Theme.setBackgroundColor = function (color) {
+Theme.prototype.setBackgroundColor = function (color) {
     this.backgroundColor = color;
 };
 
-Theme.setBorderColor = function (color) {
+Theme.prototype.setBorderColor = function (color) {
     this.borderColor = color;
 };
 
@@ -72,7 +72,7 @@ Theme.prototype.handleCss = function () {
         .themejs *:hover,
         .themejs *:focus,
         .themejs *:active,
-        .themejs input::-webkit-input-placeholder {
+        .themejs ::placeholder {
             background-color: ${this.backgroundColor};
             color: ${this.textColor};
             border-color: ${this.borderColor};
