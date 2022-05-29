@@ -56,14 +56,22 @@ Theme.prototype.init = function () {
 
 Theme.prototype.switch = function (mode) {
     if (mode === undefined) {
-        if (this.mode === 0) this.mode = 1;
-        else if (this.mode === 1) this.mode = 0;
+        if (this.isLight()) this.mode = 1;
+        else if (this.isDark()) this.mode = 0;
     } else {
         this.mode = this.getMode(mode);
     }
     this.removeCssElement();
     this.css = this.createCssElement();
     this.handleCss();
+}
+
+Theme.prototype.isDark = function () {
+    return this.mode === 1;
+}
+
+Theme.prototype.isLight = function () {
+    return this.mode === 0;
 }
 
 Theme.prototype.createCssElement = function () {
