@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0/css/bootstrap.min.css">
+    <title>Theme.js</title>
+</head>
+<body>
+    <br>
+    <div class="container">
+        <!-- Theme Toggler -->
+        <div class="text-right">
+            <div class="custom-control custom-switch" onchange="theme.switch();">
+                <input type="checkbox" class="custom-control-input" id="theme-toggler" checked>
+                <label class="custom-control-label" for="theme-toggler">Toggle Theme</label>
+        </div>
+    </div>
+    <br>
+    <div class="container border" style="padding: 8px; border-radius: 5px;">
+        <h4>Lorem Ipsum</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras in lacinia nisi, non pharetra ex. Sed lacinia lacus nec gravida volutpat. Fusce eget diam ante. Fusce risus ligula, congue ac ex quis, laoreet ullamcorper nunc. Etiam vestibulum viverra tellus, at tempus orci. Donec at nisl ac turpis sodales fringilla. Maecenas facilisis, mi quis maximus dapibus, diam risus lobortis velit, dignissim interdum velit enim ultricies massa. Nunc vestibulum, risus lobortis pellentesque scelerisque, neque sapien aliquam ipsum, sit amet suscipit leo velit in orci. Integer euismod ligula id justo hendrerit, in molestie ante porta. Suspendisse quis consectetur sapien. Mauris interdum nec eros consectetur varius. Pellentesque elementum rutrum velit, non sodales leo ornare vitae.</p>
+        Nunc a nisl in lectus tristique tempus ut imperdiet lectus. Morbi sollicitudin orci at nulla pellentesque, non pellentesque arcu lacinia. Duis fermentum efficitur felis, vitae lobortis augue suscipit non. Nunc dignissim lacus eu massa porttitor, nec semper lectus vulputate. Duis eu ligula id enim fermentum bibendum at id turpis. Ut mattis porta risus, sed scelerisque metus finibus quis. Mauris posuere viverra ligula eu sagittis.
+        Ut sed leo augue. Vestibulum porttitor, sem a finibus commodo, dolor orci imperdiet nibh, quis ornare enim enim at arcu. Mauris ligula nisl, volutpat sit amet tempor eget, venenatis sed mi. Nunc suscipit scelerisque metus, eu convallis elit blandit feugiat. In sed vestibulum felis, pretium ornare neque. Praesent feugiat ex mauris, at consectetur erat porttitor non. Proin massa enim, pellentesque id erat sed, vulputate mollis elit. Ut consectetur accumsan eleifend. Proin in metus sodales, gravida sapien accumsan, aliquam odio. Sed ornare felis purus, euismod volutpat metus sagittis a. Ut vulputate magna id nisl aliquam dapibus. Cras mattis eu mi vitae posuere. Aliquam id nulla non ex scelerisque blandit.
+        Nam consequat blandit dolor, in euismod urna rutrum in. Duis ac enim eleifend sapien molestie auctor at at arcu. Vivamus sit amet orci et neque ullamcorper pharetra. Mauris id nulla pretium, venenatis tortor nec, porttitor tortor. Nullam sit amet sagittis orci, quis ultricies orci. Donec dapibus condimentum sem ac dignissim. Aenean laoreet libero non mauris pulvinar vehicula. Praesent in eros pulvinar, imperdiet massa in, suscipit libero. Aenean consequat ultricies consectetur. Nulla quis ante massa. Aliquam non elementum orci, ut mattis orci. Vivamus felis eros, bibendum et erat et, tincidunt sodales nibh. Donec iaculis ultrices iaculis.
+        Quisque et maximus odio, ut vulputate orci. Aenean non nibh blandit, vulputate velit facilisis, ultricies lacus. Fusce sit amet sem non dolor egestas dapibus. Aliquam ac ligula in turpis hendrerit cursus. Nulla eu bibendum urna, a fringilla sapien. Sed auctor ante at turpis rhoncus, in placerat nisi pretium. Vestibulum porttitor tempus ullamcorper. Fusce libero neque, congue luctus est sed, luctus condimentum nibh. Donec ut lectus id felis vulputate venenatis. Aliquam et convallis nisi. Maecenas cursus urna id maximus ullamcorper.
+    
+    </div>
+
+    <script src="./src/theme.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        const theme = new Theme('dark');
+        theme.applyElements([
+            'body',
+            'h4',
+            'p',
+            'div.container'
+        ]);
+        theme.init();
+
+    </script>
+</body>
+</html>
