@@ -1,7 +1,7 @@
 /**
  * Theme.js
  * @author      Sadiq Ahmed <sadiq.com.bd@gmail.com>
- * @version     1.0.2
+ * @version     1.0.4
  * @description Theme JS
  * @package     Theme
  * @category    Theme
@@ -12,20 +12,13 @@
 
 function Theme(mode) {
     this.mode = this.getMode(mode);
+    this.cssProperties = {};
     this.setDefault();
     this.css = this.createCssElement();
 }
 
-Theme.prototype.setTextColor = function (mode, color) {
-    this.textColor[this.getMode(mode)] = color;
-};
-
-Theme.prototype.setBackgroundColor = function (mode, color) {
-    this.backgroundColor[this.getMode(mode)] = color;
-};
-
-Theme.prototype.setBorderColor = function (mode, color) {
-    this.borderColor[this.getMode(mode)] = color;
+Theme.prototype.setCssProperty = function (property, valueLight, valueDark) {
+    this.cssProperties[property] = [valueLight, valueDark];
 };
 
 Theme.prototype.getMode = function (mode) {
@@ -36,18 +29,9 @@ Theme.prototype.getMode = function (mode) {
 }
 
 Theme.prototype.setDefault = function () {
-    this.textColor = [
-        '#333',
-        '#f5f5f5'
-    ]
-    this.backgroundColor = [
-        '#f5f5f5',
-        '#333'
-    ]
-    this.borderColor = [
-        '#444',
-        '#ddd'
-    ]
+    this.setCssProperty('color', '#333', '#f5f5f5');
+    this.setCssProperty('background-color', '#f5f5f5', '#333');
+    this.setCssProperty('border-color', '#444', '#ddd');
 }
 
 Theme.prototype.init = function () {
@@ -119,12 +103,11 @@ Theme.prototype.handleCss = function (mode) {
         .themejs *:hover,
         .themejs *:focus,
         .themejs *:active,
-        .themejs ::placeholder {
-            background-color: ${this.backgroundColor[mode]};
-            color: ${this.textColor[mode]};
-            border-color: ${this.borderColor[mode]};
-        }
-    `);
+        .themejs ::placeholder {`);
+    for (let property in this.cssProperties) {
+        this.appendCss(`\t\t\t${property}: ${this.cssProperties[property][mode]};`);
+    }
+    this.appendCss(`\t\t}`);
 }
 
 
